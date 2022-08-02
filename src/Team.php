@@ -19,6 +19,11 @@ class Team
     private float $successRate;
 
     /**
+     * @var Team
+     */
+    private Division $division;
+
+    /**
      * Team constructor.
      * @param string $teamName
      */
@@ -78,6 +83,24 @@ class Team
     public function setSuccessRates(float $rate) : Team
     {
         $this->successRate = $rate;
+        return $this;
+    }
+
+    /**
+     * @return Division
+     */
+    public function getDivision() : Division
+    {
+        return $this->division;
+    }
+
+    /**
+     * @param Division $division
+     * @return $this
+     */
+    public function setDivision(Division $division) : Team
+    {
+        $this->division = $division;
         return $this;
     }
 }

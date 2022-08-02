@@ -7,19 +7,6 @@ namespace Vincent2090311\HockeyPlayoffs;
 class Simulator
 {
     /**
-     * @var Game
-     */
-    private Game $game;
-
-    /**
-     * Simulator constructor.
-     */
-    public function __construct()
-    {
-        $this->game = new Game();
-    }
-
-    /**
      * @return void
      */
     public function execute() : void
@@ -33,7 +20,10 @@ class Simulator
             echo "----------------------\n";
         }
 
-        list($divisionA, $divisionB) = $divisions;
-        $this->game->getChampion($divisionA, $divisionB);
+        list($homeDivision, $guestDivision) = $divisions;
+        $hteam = $homeDivision->getChampion();
+        $gteam = $guestDivision->getChampion();
+        $match = new Serie($hteam, $gteam);
+        $match->processReward(true);
     }
 }

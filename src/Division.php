@@ -22,18 +22,12 @@ class Division
     private Team $champion;
 
     /**
-     * @var Game
-     */
-    private Game $game;
-
-    /**
      * Division constructor.
      * @param string $divisionName
      */
     public function __construct(
-        string $divisionName = ""
+        string $divisionName
     ) {
-        $this->game = new Game();
         $this->setDivisionName($divisionName);
         $this->initTeams();
     }
@@ -44,7 +38,6 @@ class Division
     public function initTeams() : Division
     {
         $teams = range('A', 'H');
-        shuffle($teams);
         foreach ($teams as $team) {
             $this->divisionTeams[] = new Team($team);
         }
@@ -105,16 +98,20 @@ class Division
         $teams = $this->getTeams();
         while (count($teams) != 1) {
             echo sprintf("Round # %d:\n", $rounds);
+            shuffle($teams);
             $groups = array_chunk($teams, 2);
             $winnerTeams = [];
             foreach ($groups as $group) {
-                $winner = $this->game->getWinner($group[0], $group[1]);
-                $winnerTeams[] = $winner;
+                $match = new Serie($group[0], $group[1]);
+                $match->processReward();
+                $winnerTeams[] = $match->getWinner();
             }
             $rounds++;
             $teams = $winnerTeams;
         }
-        $this->setChampion($teams[0]);
+        $champion = $teams[0];
+        $champion->setDivision($this);
+        $this->setChampion($champion);
         return $this;
     }
 }
