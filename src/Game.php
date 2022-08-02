@@ -27,14 +27,14 @@ class Game
             $winner = $homeWinRate > $visitorWinRate ? $home : $visitor;
             $scores[$winner->getName()]++;
             if ($scores[$winner->getName()] == self::WINNING_SCORE) {
-                $losser = ($winner->getName() == $home->getName()) ? $visitor : $home;
+                $loser = ($winner->getName() == $home->getName()) ? $visitor : $home;
                 echo sprintf(
                     "Serie %s vs %s - Winner: %s (%d/%d)\n",
                     $home->getName(),
                     $visitor->getName(),
                     $winner->getName(),
                     $scores[$winner->getName()],
-                    $scores[$losser->getName()]
+                    $scores[$loser->getName()]
                 );
                 return $winner;
             }
@@ -62,7 +62,7 @@ class Game
             $winnerDivision = $homeWinRate > $visitorWinRate ? $divisionA : $divisionB;
             $scores[$winner->getName()]++;
             if ($scores[$winner->getName()] == self::WINNING_SCORE) {
-                $losser = ($winner->getName() == $home->getName()) ? $visitor : $home;
+                $loser = ($winner->getName() == $home->getName()) ? $visitor : $home;
                 echo sprintf(
                     "Final %s %s vs %s %s - Winner: %s %s (%d/%d)\n",
                     $divisionA->getDivisionName(),
@@ -72,7 +72,7 @@ class Game
                     $winnerDivision->getDivisionName(),
                     $winner->getName(),
                     $scores[$winner->getName()],
-                    $scores[$losser->getName()]
+                    $scores[$loser->getName()]
                 );
                 return $winner;
             }
