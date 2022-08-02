@@ -55,6 +55,7 @@ class Team
 
     /**
      * @param string $teamName
+     * @return $this
      */
     public function setName(string $teamName) : Team
     {
@@ -72,6 +73,7 @@ class Team
 
     /**
      * @param float $rate
+     * @return $this
      */
     public function setSuccessRates(float $rate) : Team
     {

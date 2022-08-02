@@ -69,6 +69,7 @@ class Division
 
     /**
      * @param string $divisionName
+     * @return $this
      */
     public function setDivisionName(string $divisionName) : Division
     {
@@ -78,6 +79,7 @@ class Division
 
     /**
      * @param Team $team
+     * @return $this
      */
     public function setChampion(Team $team) : Division
     {
@@ -87,6 +89,7 @@ class Division
 
     /**
      * @param Team $team
+     * @return Team
      */
     public function getChampion() : Team
     {

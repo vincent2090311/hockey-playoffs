@@ -10,6 +10,8 @@ class Game
     const WINNING_SCORE = 4;
 
     /**
+     * @param Team $home
+     * @param Team $visitor
      * @return Team
      */
     public function getWinner(Team $home, Team $visitor) : Team
@@ -40,6 +42,8 @@ class Game
     }
 
     /**
+     * @param Division $divisionA
+     * @param Division $divisionB
      * @return Team
      */
     public function getChampion(Division $divisionA, Division $divisionB) : Team
