@@ -52,7 +52,7 @@ class Serie
      * @param Team $guest
      * @return Team
      */
-    public function playGame() : Team
+    private function playGame() : Team
     {
         $scores = [
             $this->home->getName() => 0,
